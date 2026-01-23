@@ -1,0 +1,26 @@
+name: Dependencies
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+env:
+    PHP_VERSION: 8.4
+
+jobs:
+    composer-require-checker:
+        name: Check missing composer requirements
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v4
+            -   uses: shivammathur/setup-php@v2
+                with:
+                  php-version: ${{ env.PHP_VERSION }}
+                  coverage: none
+                  tools: composer:v2
+            -   run: |
+                    composer install --no-interaction --no-scripts --no-progress --ansi
+                    composer show
+            -   uses: docker://ghcr.io/webfactory/composer-require-checker:4.19.0

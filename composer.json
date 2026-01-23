@@ -1,0 +1,45 @@
+{
+    "name": "webfactory/html5-tagrewriter-bundle",
+    "description": "Symfony bundle for webfactory/html5-tagrewriter integration",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "keywords": [
+        "html5",
+        "dom",
+        "rewriter",
+        "transformer",
+        "parser",
+        "tagrewriter"
+    ],
+    "authors": [
+        {
+            "name": "webfactory GmbH",
+            "email": "info@webfactory.de",
+            "homepage": "https://www.webfactory.de"
+        }
+    ],
+    "homepage": "https://github.com/webfactory/WebfactoryHtml5TagRewriterBundle",
+    "require": {
+        "php": ">= 8.4",
+        "symfony/config": "^6.4 || ^7.4 || ^8.0",
+        "symfony/dependency-injection": "^6.4 || ^7.4 || ^8.0",
+        "symfony/http-kernel": "^6.4 || ^7.4 || ^8.0",
+        "twig/twig": "^3.0",
+        "webfactory/html5-tagrewriter": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.5.6",
+        "symfony/framework-bundle": "^6.4 || ^7.4 || ^8.0",
+        "symfony/twig-bundle": "^6.4 || ^7.4 || ^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webfactory\\Html5TagRewriterBundle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webfactory\\Html5TagRewriterBundle\\Tests\\": "tests"
+        }
+    }
+}

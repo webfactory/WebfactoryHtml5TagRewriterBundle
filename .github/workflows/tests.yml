@@ -1,0 +1,32 @@
+name: Tests
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    PHPUnit:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - { php-version: 8.4, symfony-version: '6.4.*' }
+                    - { php-version: 8.4, symfony-version: '7.4.*' }
+                    - { php-version: 8.4, symfony-version: '8.*' }
+                    - { php-version: 8.5, symfony-version: '8.*' }
+        name: PHPUnit (PHP ${{matrix.php-version}}, Symfony ${{ matrix.symfony-version }})
+        steps:
+            -   uses: actions/checkout@v4
+            -   uses: shivammathur/setup-php@v2
+                with:
+                  php-version: ${{ matrix.php-version }}
+                  coverage: none
+                  tools: composer:v2, flex
+            -   run: composer update --no-interaction --no-scripts --no-progress --ansi
+                env:
+                    SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
+            -   run: composer show
+            -   run: vendor/bin/phpunit --display-all
