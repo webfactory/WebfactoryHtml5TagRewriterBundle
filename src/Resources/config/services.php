@@ -18,7 +18,8 @@ return static function (ContainerConfigurator $container) {
 
     // Default TagRewriter (will be configured by compiler pass)
     $services->set('webfactory.html5_tag_rewriter.instance.default', Html5TagRewriter::class)
-        ->lazy();
+        ->lazy()
+        ->tag('proxy', ['interface' => TagRewriter::class]);
 
     // Autowiring alias: TagRewriter interface -> default rewriter
     $services->alias(TagRewriter::class, 'webfactory.html5_tag_rewriter.instance.default');

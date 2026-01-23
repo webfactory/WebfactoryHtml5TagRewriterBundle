@@ -26,6 +26,7 @@ class TestKernel extends Kernel
     {
         $container->extension('framework', [
             'test' => true,
+            'secret' => 'dont-tell-mum',
         ] + (Kernel::VERSION_ID < 70000 ? ['annotations' => ['enabled' => false]] : []));
 
         $services = $container->services();
