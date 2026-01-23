@@ -72,6 +72,7 @@ final class TagRewriterPass implements CompilerPassInterface
                 $definition = clone $prototype;
                 $definition->setAbstract(false);
                 $definition->setLazy(true);
+                $definition->addTag('proxy', ['interface' => TagRewriter::class]);
                 $container->setDefinition($serviceId, $definition);
             }
 
