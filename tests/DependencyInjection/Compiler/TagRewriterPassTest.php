@@ -4,7 +4,6 @@ namespace Webfactory\Html5TagRewriterBundle\Tests\DependencyInjection\Compiler;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ChildDefinition;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Webfactory\Html5TagRewriter\Implementation\Html5TagRewriter;
@@ -13,7 +12,6 @@ use Webfactory\Html5TagRewriterBundle\Attribute\AsRewriteHandler;
 use Webfactory\Html5TagRewriterBundle\DependencyInjection\Compiler\TagRewriterPass;
 use Webfactory\Html5TagRewriterBundle\Tests\Fixtures\Handler\TestDefaultHandler;
 use Webfactory\Html5TagRewriterBundle\Twig\Extension;
-use Webfactory\Html5TagRewriterBundle\WebfactoryHtml5TagRewriterBundle;
 
 class TagRewriterPassTest extends TestCase
 {
