@@ -3,6 +3,7 @@
 namespace Webfactory\Html5TagRewriterBundle\Tests\Fixtures\Handler;
 
 use Dom\Element;
+use Dom\Node;
 use Webfactory\Html5TagRewriter\Handler\BaseRewriteHandler;
 
 class TestSpecialHandler extends BaseRewriteHandler
@@ -17,8 +18,9 @@ class TestSpecialHandler extends BaseRewriteHandler
         return '//html:p';
     }
 
-    public function match(Element $element): void
+    public function match(Node $node): void
     {
-        $element->textContent = $this->content;
+        \assert($node instanceof Element);
+        $node->textContent = $this->content;
     }
 }

@@ -52,6 +52,6 @@ final class Extension extends AbstractExtension
             throw new RuntimeException('No TagRewriter registered.');
         }
 
-        return $tagRewriter->processFragment($html);
+        return $tagRewriter->processBodyFragment($html);
     }
 }

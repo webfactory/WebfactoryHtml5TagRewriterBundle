@@ -3,6 +3,7 @@
 namespace Webfactory\Html5TagRewriterBundle\Tests\Fixtures\Handler;
 
 use Dom\Element;
+use Dom\Node;
 use Webfactory\Html5TagRewriter\Handler\BaseRewriteHandler;
 use Webfactory\Html5TagRewriterBundle\Attribute\AsRewriteHandler;
 
@@ -14,8 +15,9 @@ class TestDefaultHandler extends BaseRewriteHandler
         return '//html:p';
     }
 
-    public function match(Element $element): void
+    public function match(Node $node): void
     {
-        $element->textContent = 'test-default-handler';
+        \assert($node instanceof Element);
+        $node->textContent = 'test-default-handler';
     }
 }
