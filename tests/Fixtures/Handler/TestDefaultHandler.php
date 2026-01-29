@@ -17,7 +17,7 @@ class TestDefaultHandler extends BaseRewriteHandler
 
     public function match(Node $node): void
     {
-        assert($node instanceof Element);
+        \assert($node instanceof Element);
         $node->textContent = 'test-default-handler';
     }
 }
