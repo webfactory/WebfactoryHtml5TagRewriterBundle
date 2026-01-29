@@ -26,7 +26,7 @@ class ExtensionTest extends TestCase
 
     public function testFilterUsesDefaultRewriter(): void
     {
-        $this->tagRewriter->method('processFragment')
+        $this->tagRewriter->method('processBodyFragment')
             ->with('<p>input</p>')
             ->willReturn('<p class="processed">output</p>');
 
@@ -37,7 +37,7 @@ class ExtensionTest extends TestCase
 
     public function testFilterUsesNamedRewriter(): void
     {
-        $this->tagRewriter->method('processFragment')
+        $this->tagRewriter->method('processBodyFragment')
             ->with('<p>input</p>')
             ->willReturn('<p class="processed">output</p>');
 
@@ -49,9 +49,9 @@ class ExtensionTest extends TestCase
     public function testFilterUsesOnlyDefaultRewriter(): void
     {
         $defaultRewriter = $this->createStub(TagRewriter::class);
-        $defaultRewriter->method('processFragment')->with('something')->willReturn('default');
+        $defaultRewriter->method('processBodyFragment')->with('something')->willReturn('default');
         $otherRewriter = $this->createStub(TagRewriter::class);
-        $otherRewriter->method('processFragment')->willReturn('other');
+        $otherRewriter->method('processBodyFragment')->willReturn('other');
 
         $this->extension->setDefaultTagRewriter($defaultRewriter);
         $this->extension->addTagRewriter('other-rewriter', $otherRewriter);
@@ -62,9 +62,9 @@ class ExtensionTest extends TestCase
     public function testFilterUsesOnlySpecialRewriter(): void
     {
         $defaultRewriter = $this->createStub(TagRewriter::class);
-        $defaultRewriter->method('processFragment')->willReturn('default');
+        $defaultRewriter->method('processBodyFragment')->willReturn('default');
         $otherRewriter = $this->createStub(TagRewriter::class);
-        $otherRewriter->method('processFragment')->with('something')->willReturn('other');
+        $otherRewriter->method('processBodyFragment')->with('something')->willReturn('other');
 
         $this->extension->setDefaultTagRewriter($defaultRewriter);
         $this->extension->addTagRewriter('other-rewriter', $otherRewriter);
